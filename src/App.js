@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import 'bootswatch/dist/slate/bootstrap.min.css'
+import Nav from "./components/nav"
+import Loging from "./components/loging"
+import Registrar from "./components/Registrar";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   
+    <>
+    <Router>
+    
+    <Route path="/inicio" component={Loging}/>
+ <Nav/>
+
+ 
+ </Router>
+    </>
+  )
 }
 
 export default App;
