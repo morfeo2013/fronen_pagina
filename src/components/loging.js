@@ -3,11 +3,12 @@ import Axios from "axios";
 import React, { useState } from "react";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom"
-function loging() {
+function Loging() {
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
+    const [admin, setAdmin] = useState(Boolean);
   
-    const login = async (e) => {
+    const Login = async (e) => {
       e.preventDefault();
   
       /* este recivira los datos desda la pagina para ser comparados con los del backend */
@@ -26,7 +27,7 @@ function loging() {
           .mensage; /* extraemos el mensaje desde el backen creado para mostrarlo en el sweetalert2 */
   
       if (mensaje === "Ingresate login valido desde el backend") {
-        const contadorFavoritos = respuesta.data.contadorFavoritos;
+       
         const user2 = respuesta.data.user2;
         const admin = respuesta.data.admin;
         const token = respuesta.data.token;
@@ -34,7 +35,7 @@ function loging() {
           respuesta.data
             .nombre; /* despuesde recibir el nombre para mostrarl oen el navvar */
         const id = respuesta.data.id;
-  
+         
         /* const nombre=respuesta.data.nombre */
         sessionStorage.setItem("token", token);
         sessionStorage.setItem(
@@ -45,7 +46,7 @@ function loging() {
         sessionStorage.setItem("admin", admin);
         /* sessionStorage.setItem('nombre', nombre) */
         sessionStorage.setItem("user2", user2);
-        sessionStorage.setItem("contadorFavoritos", contadorFavoritos);
+       
         Swal.fire({
           icon: "success",
           title: mensaje,
@@ -53,7 +54,7 @@ function loging() {
         });
         /* lo direcciona a la pagina seleccionada despues de tener el login correcto */
         setTimeout(() => {
-          if (admin === id) {
+          if (admin === nombre) {
             window.location.href = "/visualAdmin";
           } /*vista para el admin */ else {
             window.location.href = '/VistaProductosUsuario';
@@ -83,7 +84,7 @@ function loging() {
             <div className="card-header text-center">Iniciar Sesion</div>
   
             <div className="card-boddy m-2">
-              <form onSubmit={login}>
+              <form onSubmit={Login}>
                 <div className="form-group mt-2">
                   <input
                     type="email"
@@ -142,4 +143,4 @@ function loging() {
     );
 }
 
-export default loging
+export default Loging

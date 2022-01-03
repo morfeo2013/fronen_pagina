@@ -4,11 +4,6 @@ import Swal from "sweetalert2";
 
 export default function Registrar() {
   const [nombre, setNombre] = useState("");
-  // eslint-disable-next-line no-unused-vars
-  const [cedula, setCedula] = useState("");
-  const [contacto, setContacto] = useState("");
-  const [direccion, setDireccion] = useState("");
-  const [ciudad, setCiudad] = useState("");
   const [correo, setCorreo] = useState("");
   const [contrasena, setContrasena] = useState("");
 
@@ -20,12 +15,7 @@ export default function Registrar() {
     const usuario = {
       correo,
       contrasena,
-      cedula,
-      contacto,
-      direccion,
-      ciudad,
-      nombre,
-      contadorFavoritos,
+      nombre
     };
     const respuesta = await Axios.post(
       "http://localhost:4000/registrar",
@@ -43,7 +33,7 @@ export default function Registrar() {
           .nombre; /* se agrega el nombre para el encabezado como en el registro directamente */
       const admin = respuesta.data.admin;
       const token = respuesta.data.token;
-      const contadorFavoritos = respuesta.data.contadorFavoritos;
+   
 
       const id = respuesta.data.id;
       /* const nombre=respuesta.data.nombre */
@@ -52,7 +42,7 @@ export default function Registrar() {
       sessionStorage.setItem("id", id);
       sessionStorage.setItem("admin", admin);
       sessionStorage.setItem("nombre", nombre);
-      sessionStorage.setItem("contadorFavoritos", contadorFavoritos);
+
       Swal.fire({
         icon: "success",
         title: mensaje,
@@ -123,16 +113,7 @@ export default function Registrar() {
                     onChange={(e) => setDireccion(e.target.value)}
                   />
                 </div> */}
-                <div className="form-group mt-2">
-                  <input
-                    type="text"
-                    name="contrasena"
-                    className="form-control"
-                    placeholder="Ciudad"
-                    required
-                    onChange={(e) => setCiudad(e.target.value)}
-                  />
-                </div>
+               
                 <div className="form-group mt-2">
                   <input
                     type="email"

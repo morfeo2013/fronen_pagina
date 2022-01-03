@@ -1,9 +1,41 @@
-import React from 'react'
+import React,{ useEffect,useState } from 'react'
 import { Link } from "react-router-dom"
 
-function nav() {
+
+
+
+
+
+
+function Nav() {
+
+/* controlar menu admin o usuario */
+const [menu, setMenu] = useState(false);
+const id = sessionStorage.getItem("nombre");
+const id2 = sessionStorage.getItem("admin");
+useEffect(() => {
+  if (id === id2) {
+    setMenu(true);
+  }
+}, [id, id2]);
+
+/* Salir dee sesion */
+const salir = () => {
+  sessionStorage.clear();
+  
+};
+
+
+
+
+
     return (
+
+
         <div>
+        
+
+
          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
   <div className="container-fluid">
     <a className="navbar-brand" href="#">Navbar</a>
@@ -32,9 +64,14 @@ function nav() {
           </ul>
         </li>
         <li className="nav-item col-md-6 col-lg-3 col-xl-5">
-                      <Link id="ingresar2" className="nav-link " to="/usuarioApp">
-                        <p><i class="fas fa-users"></i> ACCEDER</p>
-                      </Link>
+        <Link
+                      
+                      className="nav-link"
+                      to="/"
+                      onClick={() => salir()}
+                    >
+                      Salir
+                    </Link>
                     </li>
       </ul>
       
@@ -46,5 +83,5 @@ function nav() {
 }
 
 
-export default nav
+export default Nav
 
