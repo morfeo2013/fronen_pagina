@@ -52,21 +52,24 @@ function Nav() {
                   id="navbarNavDropdown"
                 >
                   <ul className="navbar-nav">
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        aria-current="page"
-                        href="#"
-                      >
-                        ADMNISTRAR PRODUCTOS
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="#">
-                        ADMINISTRAR USUARIOS
-                      </a>
-                    </li>
-
+                  <li className="nav-item col-md-6 col-lg-3 col-xl-5">
+                        <Link
+                          className="nav-link"
+                          to="/visualAdmin"
+                         
+                        >
+                           ADMNISTRAR PRODUCTOS
+                        </Link>
+                      </li>
+                      <li className="nav-item col-md-6 col-lg-3 col-xl-5">
+                    <Link
+                          className="nav-link"
+                          to="/AdminUsuario"
+                          
+                        >
+                          ADMNISTRAR USUARIO
+                        </Link>
+                        </li>
                     <ul>
                       <li className="nav-item col-md-6 col-lg-3 col-xl-5">
                         <Link
@@ -104,16 +107,24 @@ function Nav() {
                   id="navbarNavDropdown"
                 >
                   <ul className="navbar-nav">
-                    <li className="nav-item">
-                      <a
-                        className="nav-link active"
-                        aria-current="page"
-                        href="#"
-                      >
-                        ADMNISTRAR PRODUCTOS
-                      </a>
-                    </li>
-
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      to="/VistaProductosUsuario"
+                      
+                    >
+                      PRODUCTOS
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link
+                      className="nav-link"
+                      to="/AdministrarProductosUsuario"
+                    
+                    >
+                     ADMINISTRAR PRODUCTOS
+                    </Link>
+                  </li>
                     <ul>
                       <li className="nav-item col-md-6 col-lg-3 col-xl-5">
                         <Link

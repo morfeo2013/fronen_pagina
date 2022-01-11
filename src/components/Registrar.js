@@ -8,7 +8,7 @@ export default function Registrar() {
   const [contrasena, setContrasena] = useState("");
 
   const registrar = async (e) => {
-    const contadorFavoritos = 0;
+   
     e.preventDefault();
 
     /* este recivira los datos desda la pagina para ser comparados con los del backend */
@@ -16,7 +16,7 @@ export default function Registrar() {
       correo,
       contrasena,
       nombre
-    };
+    };  
     const respuesta = await Axios.post(
       "http://localhost:4000/registrar",
       usuario
@@ -33,7 +33,8 @@ export default function Registrar() {
           .nombre; /* se agrega el nombre para el encabezado como en el registro directamente */
       const admin = respuesta.data.admin;
       const token = respuesta.data.token;
-   
+
+      const correo = respuesta.data.correo;
 
       const id = respuesta.data.id;
       /* const nombre=respuesta.data.nombre */
@@ -42,6 +43,7 @@ export default function Registrar() {
       sessionStorage.setItem("id", id);
       sessionStorage.setItem("admin", admin);
       sessionStorage.setItem("nombre", nombre);
+      sessionStorage.setItem("correo", correo);
 
       Swal.fire({
         icon: "success",

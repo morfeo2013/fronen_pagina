@@ -30,6 +30,7 @@ function Loging() {
       const admin = respuesta.data.admin;
       const token = respuesta.data.token;
       const nombre = respuesta.data.nombre;
+      const correo = respuesta.data.correo;
       /* despuesde recibir el nombre para mostrarl oen el navvar */
       const id = respuesta.data.id;
 
@@ -40,6 +41,7 @@ function Loging() {
       sessionStorage.setItem("admin", admin);
       /* sessionStorage.setItem('nombre', nombre) */
       sessionStorage.setItem("user2", user2);
+      sessionStorage.setItem("correo", correo);
 
       Swal.fire({
         icon: "success",
