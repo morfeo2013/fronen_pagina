@@ -106,6 +106,8 @@ function Nav() {
                   className="collapse navbar-collapse"
                   id="navbarNavDropdown"
                 >
+
+                  
                   <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link
@@ -119,7 +121,7 @@ function Nav() {
                   <li className="nav-item">
                     <Link
                       className="nav-link"
-                      to="/AdministrarProductosUsuario"
+                      to="/ProductosUsuarioAdmin"
                     
                     >
                      ADMINISTRAR PRODUCTOS

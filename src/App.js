@@ -7,6 +7,8 @@ import Registrar from "./components/Registrar";
 import VistaProductosUsuario from "./components/VistaProductosUsuario";
 import VistaProductosAdmin from "./components/VistaProductosAdmin";
 import AdminUsuario from "./components/AdminUsuario";
+import EditarCrearProducto from "./components/EditarCrearProducto"
+import ProductosUsuarioAdmin from "./components/ProductosUsuarioadmin"
 
 function App() {
   return (
@@ -23,6 +25,9 @@ function App() {
  <Route exact path='/VistaProductosUsuario' component={VistaProductosUsuario}/>
  <Route exact path='/visualAdmin' component={VistaProductosAdmin}/>
  <Route exact path='/AdminUsuario' component={AdminUsuario}/>
+ <Route exact path='/EditarCrearProducto' component={EditarCrearProducto}/>
+
+ <Route exact path='/ProductosUsuarioAdmin' component={ProductosUsuarioAdmin}/>
 
  
 

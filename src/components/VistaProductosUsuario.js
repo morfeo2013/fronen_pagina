@@ -57,7 +57,7 @@ export default function VistaProductosUsuario() {
 
 
 
-        const respuesta = await Axios.get('https://ganohealthy.herokuapp.com/obtener/') /* usando axios se descarga con una peticion get la lista de  usuarios del backend */
+        const respuesta = await Axios.get('http://localhost:4000/obtener/') /* usando axios se descarga con una peticion get la lista de  usuarios del backend */
         /* SE PASA LA INFORMACION AL ESTADO SETDATOS Y DATOS */
         setDatos(respuesta.data)  /* se envia la informacion al estado setdatos para ser almacenado en datos finalmente E NLA HUBICACION .DATA DEL OBJETO JSON RECIBIDO DE LBACKEND*/
         sessionStorage.setItem('contProductos', ((respuesta.data).length))
@@ -93,24 +93,24 @@ export default function VistaProductosUsuario() {
         OPCIONS A UN TEXTO Y AL SER IGUAL EJECUTA LA OPCION DESEADA */
 
         /* SE PASAN LOS DATOS DE EL ESTADO DATOS A SETBUSCAR PARA TERMINAR LUEGO EN BUSCAR */
-        if (opcion === 'titulo')
+        if (opcion === 'nombre')
             setBuscar(datos.filter(datos2 => {
 
                 /* se pasan los valores del datos del backen al arrays setbuscar */
                 return datos2.titulo.includes(search) /* retorna los valores que contengan en la palabra search */
             }))
 
-        else if (opcion === 'autor')
+        else if (opcion === 'descripcion')
             setBuscar(datos.filter(datos2 => {
 
                 /* se pasan los valores del datos del backen al arrays setbuscar */
                 return datos2.autor.includes(search) /* retorna los valores que contengan en la palabra search */
             }))
-        else if (opcion === 'genero')
+        else if (opcion === 'precio')
             setBuscar(datos.filter(datos2 => {
 
                 /* se pasan los valores del datos del backen al arrays setbuscar */
-                return datos2.genero.includes(search) /* retorna los valores que contengan en la palabra search */
+                return datos2.precio.includes(search) /* retorna los valores que contengan en la palabra search */
             }))
 
 
@@ -121,7 +121,7 @@ export default function VistaProductosUsuario() {
             setBuscar(datos.filter(datos2 => {
 
                 /* se pasan los valores del datos del backen al arrays setbuscar */
-                return datos2.titulo.includes(search) /* retorna los valores que contengan en la palabra search */
+                return datos2.nombre.includes(search) /* retorna los valores que contengan en la palabra search */
             }))
     }, [datos, search, opcion])
 
