@@ -257,11 +257,11 @@ text"
                         type="
 text"
                         className="form-control"
-                        value={precio}
+                        value={descripcion}
                         onChange={(e) =>
                           setPrecio(e.target.value.toLowerCase())
                         }
-                        placeholder="codigo"
+                        placeholder="Detalle"
                         required
                       />
                     </div>
@@ -270,9 +270,9 @@ text"
                         type="
 text"
                         className="form-control"
-                        value={descripcion}
+                        value={estrella}
                         onChange={(e) => setDescripcion(e.target.value.toLowerCase())}
-                        placeholder="detalle"
+                        placeholder="Puntuacion"
                         required
                       />
                     </div>
@@ -282,7 +282,7 @@ text"
                         type="
 text"
                         className="form-control"
-                        value={estrella}
+                        value={precio}
                         onChange={(e) => setEstrella(e.target.value.toLowerCase())}
                         placeholder="Valor"
                         required
@@ -310,7 +310,7 @@ text"
                       ) => setNombre(e.target.value.toLowerCase())}
                       required
                       autoFocus
-                      placeholder="Producto"
+                      placeholder="Nombre"
                     />
                   </div>
                   <div className="form-group  mt-3">
@@ -318,9 +318,9 @@ text"
                       type="
  text"
                       className="form-control"
-                      value={precio}
-                      onChange={(e) => setPrecio(e.target.value.toLowerCase())}
-                      placeholder="codigo"
+                      value={descripcion}
+                      onChange={(e) => setDescripcion(e.target.value.toLowerCase())}
+                      placeholder="Descripcion"
                       required
                     />
                   </div>
@@ -329,9 +329,9 @@ text"
                       type="
  text"
                       className="form-control"
-                      value={nombre}
-                      onChange={(e) => setNombre(e.target.value.toLowerCase())}
-                      placeholder="detalle"
+                      value={estrella}
+                      onChange={(e) => setEstrella(e.target.value.toLowerCase())}
+                      placeholder="Puntuacion"
                       required
                     />
                   </div>
@@ -341,8 +341,8 @@ text"
                       type="
  text"
                       className="form-control"
-                      value={estrella}
-                      onChange={(e) => setEstrella(e.target.value.toLowerCase())}
+                      value={precio}
+                      onChange={(e) => setPrecio(e.target.value.toLowerCase())}
                       placeholder="Valor"
                       required
                     />

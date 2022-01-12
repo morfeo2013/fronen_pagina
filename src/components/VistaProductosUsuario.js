@@ -192,10 +192,7 @@ export default function VistaProductosUsuario() {
                         </div>
 
 
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value='genero' onChange={e => setOpcion(e.target.value)} />
-                            <label className="form-check-label" htmlFor="inlineRadio2">Buscar por Codigo</label>
-                        </div>
+                        
 
 
 
@@ -242,11 +239,13 @@ export default function VistaProductosUsuario() {
 
 
 
-                                <strong>Detalle: {productos.precio}</strong>
+                                <strong>Detalle: {productos.descripcion}</strong>
                                 <p></p>
-                                <strong>Puntuacion: {productos.descripcion}</strong>
+                                <strong>Puntuacion: {productos.estrella}</strong>
                                 <p></p>
-                                <strong>Valor: {'$'}{productos.estrella}</strong>
+                                <strong>Valor: {'$'}{productos.precio}</strong>
+                                <p></p>
+                                <strong>Contacto: {' '}{productos.correo}</strong>
 
                             </div>
                             <td >

@@ -198,7 +198,7 @@ export default function AdminUsuario() {
 
 
     return (
-        <div className="container border border-secondary">
+        <div className="container fluid">
             {/* CREO LA BARRA DE BUSQUEDA */}
 
 
@@ -259,7 +259,7 @@ export default function AdminUsuario() {
                    
                    
                 </div>
-                <div className="col-md-6 ml-auto">
+                <div className="container col-auto">
                         <input type="search2" className="form-control mr-sm-2" placeholder="Buscar Usuario por..." onChange={
                             (e) => setSearch2(e.target.value)} required />
                         {/* se le da valor al estado search2  y  va a larer lo que  Y LOS ENVIARA AL ESTADO setSearch2(e.target.value) QUE POSTERIOR MENTE LO ENVIARA AL ESTADO TEXTO "SEARCH2"*/}
@@ -288,10 +288,7 @@ export default function AdminUsuario() {
                             {/* ACA VA EL ENCABEZADO DE LA LISTA */}
                             <th scope="col">#</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Cedula</th>
-                            <th scope="col">Contacto</th>
-                            <th scope="col">Direccion</th>
-                            <th scope="col">Ciudad</th>
+                            
                             <th scope="col">Correo</th>
                             <th scope="col">Opciones</th>
                         </tr>
@@ -319,10 +316,8 @@ export default function AdminUsuario() {
 
                                     }
                                     <td>{clientes.nombre}</td>
-                                    <td>{clientes.cedula}</td>
-                                    <td>{clientes.contacto}</td>
-                                    <td>{clientes.direccion}</td>
-                                    <td>{clientes.ciudad}</td>
+                                   
+                                  
                                     <td>{clientes.correo}</td>
 
 
