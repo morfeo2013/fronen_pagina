@@ -5,6 +5,12 @@ import Swal from "sweetalert2";
 export default function EditarCrearProducto(props) {
   /* aca el props es para identificar la ruta   que se ingreso  e identificar si es para editar o crear */
 
+
+
+ /* obtener el correo */
+ const correoBase = sessionStorage.getItem("correo");
+
+
   /* crear los esatados del backen */
   const [nombre, setNombre] = useState("");
   const [descripcion, setDescripcion] = useState("");
@@ -120,7 +126,7 @@ export default function EditarCrearProducto(props) {
     formdata.append("descripcion", descripcion);
     formdata.append("precio", precio);
     formdata.append("estrella", estrella);
-    formdata.append("correo", correo)
+    formdata.append("correo", correoBase)
     formdata.append("image", imagen); /* deve decir 'image' el archivo */
 
     const respuesta = await Axios.post(

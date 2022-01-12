@@ -73,7 +73,7 @@ export default function VistaProductosUsuario() {
 
 
     /*   USSEFECT
-    ESTE ES PARA MOSTRAR LA LISTA DE LIBROS
+    ESTE ES PARA MOSTRAR LA LISTA DE productos
 
     el useeffect es para iniciar automaticamente en determinada accion este caso 
         la funcion obtener listado de usarios */
@@ -226,34 +226,34 @@ export default function VistaProductosUsuario() {
 
             <div className="row " id="card1"> {/* para colocarlos en horizontal */}
 
-                {buscar.map(libros => (
-                    <div className="col-md-4 pt-2" key={libros._id}>
+            {buscar.map(productos => (
+                    <div className="col-md-4 pt-2" key={productos._id}>
 
                         <div className="card text-center" id="card2">
 
                             <div className="card-header">
-                                <strong>Producto: {libros.titulo}</strong>
+                                <strong>Nombre: {productos.nombre}</strong>
                             </div>
                             <div className=" imagen3 ">
-                                <img className="  img-thumbnail img-fluid  text-center" src={libros.imagen} width="20" height="20" alt=""></img>
-                                {console.log(libros.imagen)}
+                                <img className="  img-thumbnail img-fluid  text-center" src={productos.imagen} width="20" height="20" alt=""></img>
+                                {console.log(productos.imagen)}
                             </div>
                             <div className="card-body ">
 
 
 
-                                <strong>codigo: {libros.genero}</strong>
+                                <strong>Detalle: {productos.precio}</strong>
                                 <p></p>
-                                <strong>Descripcion: {libros.autor}</strong>
+                                <strong>Puntuacion: {productos.descripcion}</strong>
                                 <p></p>
-                                <strong>Valor: {'$'}{libros.ficha}</strong>
+                                <strong>Valor: {'$'}{productos.estrella}</strong>
 
                             </div>
                             <td >
 
 
                                 <Link className="btn btn-info mr-2" to='/registrar/' ><i className="far fa-address-book  m-1"></i>
-    Registrate
+   Ver Detalle
  </Link>
 
 

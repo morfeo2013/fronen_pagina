@@ -57,7 +57,7 @@ export default function VistaProductosAdmin() {
 
 
 
-        const respuesta = await Axios.get('https://ganohealthy.herokuapp.com/obtener/') /* usando axios se descarga con una peticion get la lista de  usuarios del backend */
+        const respuesta = await Axios.get('http://localhost:4000/obtener/') /* usando axios se descarga con una peticion get la lista de  usuarios del backend */
         /* SE PASA LA INFORMACION AL ESTADO SETDATOS Y DATOS */
         setDatos(respuesta.data)  /* se envia la informacion al estado setdatos para ser almacenado en datos finalmente E NLA HUBICACION .DATA DEL OBJETO JSON RECIBIDO DE LBACKEND*/
         sessionStorage.setItem('contProductos', ((respuesta.data).length))
@@ -121,7 +121,7 @@ export default function VistaProductosAdmin() {
             setBuscar(datos.filter(datos2 => {
 
                 /* se pasan los valores del datos del backen al arrays setbuscar */
-                return datos2.titulo.includes(search) /* retorna los valores que contengan en la palabra search */
+                return datos2.nombre.includes(search) /* retorna los valores que contengan en la palabra search */
             }))
     }, [datos, search, opcion])
 
@@ -226,27 +226,27 @@ export default function VistaProductosAdmin() {
 
             <div className="row " id="card1"> {/* para colocarlos en horizontal */}
 
-                {buscar.map(libros => (
-                    <div className="col-md-4 pt-2" key={libros._id}>
+            {buscar.map(productos => (
+                    <div className="col-md-4 pt-2" key={productos._id}>
 
                         <div className="card text-center" id="card2">
 
                             <div className="card-header">
-                                <strong>Producto: {libros.titulo}</strong>
+                                <strong>Producto: {productos.nombre}</strong>
                             </div>
                             <div className=" imagen3 ">
-                                <img className="  img-thumbnail img-fluid  text-center" src={libros.imagen} width="20" height="20" alt=""></img>
-                                {console.log(libros.imagen)}
+                                <img className="  img-thumbnail img-fluid  text-center" src={productos.imagen} width="20" height="20" alt=""></img>
+                                {console.log(productos.imagen)}
                             </div>
                             <div className="card-body ">
 
 
 
-                                <strong>codigo: {libros.genero}</strong>
+                                <strong>codigo: {productos.precio}</strong>
                                 <p></p>
-                                <strong>Descripcion: {libros.autor}</strong>
+                                <strong>Descripcion: {productos.descripcion}</strong>
                                 <p></p>
-                                <strong>Valor: {'$'}{libros.ficha}</strong>
+                                <strong>Valor: {'$'}{productos.estrella}</strong>
 
                             </div>
                             <td >
