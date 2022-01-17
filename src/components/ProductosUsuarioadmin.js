@@ -13,8 +13,8 @@ A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACI
 /* SE CREA EL COMPONENTE ListarLibro() */
 export default function ProductosUsuarioadmin() {
 
-    const correoBase = sessionStorage.getItem("correo");
-
+    const correoBase1 = sessionStorage.getItem("correo");
+    const correoBase= correoBase1+""
 
 
     /* ESTADOS PARA GUARDAR LOS DATOS RECIBIDOS DEL BACKEND DE TODOS LOS  USARIOS */
@@ -87,16 +87,27 @@ export default function ProductosUsuarioadmin() {
     /* LOSSEGUNDO QUE EVALUARA ES QUE HAY EN EL ESTADO OPCION QUE ES EL ENCARGADO DE RECIVIR EL objeto DE LA BUSQUEDA  */
     useEffect(() => {
   
+
+
+       
+                setBuscar(
+          
+
+           
+                    datos.filter((datos2) => {
+
+                        if( correoBase===datos2.correo
+                
+                            ){ /* se pasan los valores del datos del backen al arrays setbuscar */
+                                return datos2.correo.includes(
+                                  correoBase
+                                ); /* retorna los valores que contengan en la palabra correo  */}
+                     
+                    })
+                  );   
+             
         /* SE PASAN LOS DATOS DE EL ESTADO DATOS A SETBUSCAR PARA TERMINAR LUEGO EN BUSCAR */
-        setBuscar(
         
-          datos.filter((datos2) => {
-            /* se pasan los valores del datos del backen al arrays setbuscar */
-            return datos2.correo.includes(
-              correoBase
-            ); /* retorna los valores que contengan en la palabra correo  */
-          })
-        );
       }, [datos]);
 
 
@@ -264,7 +275,7 @@ export default function ProductosUsuarioadmin() {
                                 <td >{i + 1}</td>
                                 {/* agregar la imagen desde el link */}
                                 <div className=" imagen4 ">
-                                    <img className="  img-thumbnail img-fluid  text-center" src={productos.imagen} width="20" height="20" alt=""></img>
+                                    <img className="   text-center" src={productos.imagen} width="100" height="100" alt=""></img>
                                     {console.log(productos.imagen)}
                                 </div>
                                 <td>{productos.nombre}</td>

@@ -229,26 +229,7 @@ export default function AdminUsuario() {
                         </div>
 
 
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio"
-                                /*  defaultChecked={true}  para seleccionar de inicio una de las opcionees */
-                                name="inlineRadioOptions" id="inlineRadio2" value='cedula' onChange={e => setOpcion(e.target.value)}
-
-                            />
-                            <label className="form-check-label" htmlFor="inlineRadio2">Buscar por Cedula</label>
-                        </div>
-
-
-
-
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio"
-                                /*  defaultChecked={true}  para seleccionar de inicio una de las opcionees */
-                                name="inlineRadioOptions" id="inlineRadio3" value='ciudad' onChange={e => setOpcion(e.target.value)}
-
-                            />
-                            <label className="form-check-label" htmlFor="inlineRadio3">Buscar por ciudad</label>
-                        </div>
+                        
 
                         {/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
 

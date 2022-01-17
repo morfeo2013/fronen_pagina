@@ -2,6 +2,7 @@ import Axios from 'axios'/* PARA PODER HACER LAS PETICIONES GET,PUT,POS,DELETE E
 
 import React, { useEffect, useState } from 'react' /* PARA UTILIZAR LOS ESTADOS (useState) Y QUE SE EJECUTEN PRIMERO DETERMINADAS ACCIONES (useEffect) */
 
+import Swal from 'sweetalert2'/* EL EFECTO IMPORTADO DE ANIMACION */
 
 
 import { Link } from 'react-router-dom'  /* IMPORTAR PARA PODER ACCEDER AL PA PROPIEDAD LINK Y ACCEDER
@@ -133,7 +134,22 @@ export default function VistaProductosAdmin() {
 
     /* FUNCION ELIMINAR */
 
-    /* para generar doble verificacion de eliminar */
+    const eliminarSub = async (id) => {
+
+        const respuesta = await Axios.delete('http://localhost:4000/eliminar/' + id) /* cuando reciba l informacion entra tambien el id de el elemento a eliminar */
+        obtenerUsuarios()  /* se llama para vuela inmediatamente a la lista inicial */
+        const mensaje = respuesta.data.mensaje
+        /*   console.log(respuesta) */
+
+
+        Swal.fire({
+
+            icon: 'success',
+            title: mensaje,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
 
 
     /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -143,7 +159,29 @@ export default function VistaProductosAdmin() {
 
     /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
+ /* FUNCION ELIMINAR */
+ const eliminar = (id) => {
 
+    Swal.fire({
+        title: 'Eliminar Documento',
+        text: "Esta seguro de Eliminar la Informacion?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar documento'
+
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            eliminarSub(id)
+
+
+        }
+    })
+
+
+}
     
 
 
@@ -192,10 +230,7 @@ export default function VistaProductosAdmin() {
                         </div>
 
 
-                        <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value='genero' onChange={e => setOpcion(e.target.value)} />
-                            <label className="form-check-label" htmlFor="inlineRadio2">Buscar por Codigo</label>
-                        </div>
+                        
 
 
 
@@ -232,7 +267,7 @@ export default function VistaProductosAdmin() {
                         <div className="card text-center" id="card2">
 
                             <div className="card-header">
-                                <strong>Producto: {productos.nombre}</strong>
+                                <strong>Nombre: {productos.nombre}</strong>
                             </div>
                             <div className=" imagen3 ">
                                 <img className="  img-thumbnail img-fluid  text-center" src={productos.imagen} width="20" height="20" alt=""></img>
@@ -242,24 +277,33 @@ export default function VistaProductosAdmin() {
 
 
 
-                                <strong>codigo: {productos.precio}</strong>
+                                <strong>Detalle: {productos.descripcion}</strong>
                                 <p></p>
-                                <strong>Descripcion: {productos.descripcion}</strong>
+                                <strong>Puntuacion: {productos.estrella}</strong>
                                 <p></p>
-                                <strong>Valor: {'$'}{productos.estrella}</strong>
+                                <strong>Valor: {'$'}{productos.precio}</strong>
+                                <p></p>
+                                <strong>Contacto: {' '}{productos.correo}</strong>
 
                             </div>
                             <td >
 
 
-                                <Link className="btn btn-info mr-2" to='/registrar/' ><i className="far fa-address-book  m-1"></i>
-    Registrate
+<Link className="btn btn-info mr-2" to={'/editar/' + productos._id}><i class="fas fa-sync-alt"></i>
+    Actualizar
  </Link>
 
 
 
+<button className="btn btn-danger mr-2" onClick={() => eliminar(productos._id)}> <i className="far fa-trash-alt"></i>{/* agregar el onClick para ejecutaar la funcion eliminar APROVECHA Y SACA EL ._ID Y LO ENVIA A LA FUNCION ELIMINAR(_ID)*/}
 
-                            </td>
+     Eliminar
+
+
+
+
+ </button>
+</td>
                             
 
 
