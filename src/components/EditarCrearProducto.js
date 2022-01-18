@@ -4,9 +4,9 @@ import Swal from "sweetalert2";
 
 export default function EditarCrearProducto(props) {
   /* aca el props es para identificar la ruta   que se ingreso  e identificar si es para editar o crear */
+  sessionStorage.setItem("admin", admin);
 
-
-
+ 
  /* obtener el correo */
  const correoBase = sessionStorage.getItem("correo");
 
@@ -19,7 +19,7 @@ export default function EditarCrearProducto(props) {
   const [correo, setCorreo] = useState("");
   const [imagen, setImagen] = useState("");
   const [unidades, setUnidades] = useState("");
-
+  const [admin, setAdmin] = useState("");
   /* COMANDOS PARA GENERAR LA VALIDACION DE PA PAGINA CREAR O MODIFICAR */
 
   /* PARA UTILIZAR EL MISMO DISEÑO PARA VARIAS ORDENES CREAR MODIFICAR DE ALA WEB */
@@ -111,8 +111,16 @@ export default function EditarCrearProducto(props) {
       showConfirmButton: false,
     });
     setTimeout(() => {
-      window.location.href =
-        "/visualAdmin/"; /* para redirigir ala pagina listar */
+
+
+      if(admin===""){
+        window.location.href = "/VistaProductosUsuario"
+        ; /* para redirigir ala pagina listar */
+      }else{
+        window.location.href = "/visualAdmin/"
+        ; /* para redirigir ala pagina listar */
+      }
+
     }, 1300);
   };
 

@@ -29,7 +29,7 @@ function App() {
 
  <Route exact path='/ProductosUsuarioAdmin' component={ProductosUsuarioAdmin}/>
 
- 
+ <Route path="/editar/:id" component={EditarCrearProducto} />
 
  
  </Router>
