@@ -4,8 +4,9 @@ import Swal from "sweetalert2";
 
 export default function EditarCrearProducto(props) {
   /* aca el props es para identificar la ruta   que se ingreso  e identificar si es para editar o crear */
-  sessionStorage.setItem("admin", admin);
-
+ 
+  const id1 = sessionStorage.getItem("nombre");
+  const id2 = sessionStorage.getItem("admin");
  
  /* obtener el correo */
  const correoBase = sessionStorage.getItem("correo");
@@ -112,12 +113,12 @@ export default function EditarCrearProducto(props) {
     });
     setTimeout(() => {
 
-
-      if(admin===""){
-        window.location.href = "/VistaProductosUsuario"
+     
+      if(id1===id2){
+        window.location.href =  "/visualAdmin/"
         ; /* para redirigir ala pagina listar */
-      }else{
-        window.location.href = "/visualAdmin/"
+      }else {
+        window.location.href = "/VistaProductosUsuario"
         ; /* para redirigir ala pagina listar */
       }
 

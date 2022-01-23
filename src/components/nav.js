@@ -14,6 +14,7 @@ function Nav() {
       setAdmin(true);
     }
   }, [id, id2]);
+  
   useEffect(() => {
     if (sessionStorage.getItem("token")) {
       setMenu(true);
