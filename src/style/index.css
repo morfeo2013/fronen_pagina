@@ -1,3 +1,16 @@
+
+/* estilo de letra a un tipo de titulo */
+@font-face {
+  font-family: satisfy;
+  src: url(Satisfy-Regular.ttf)
+} 
+/* titulo producto */
+
+.satisfy_id{
+  font-family: satisfy;
+  color:#ff936c;
+ }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,6 +25,13 @@ code {
     monospace;
 }
 
+.modal0{
+  padding: 3px 10px;
+  border:#fffff0;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  
+}
 
 .imagen3 img{
   height: 170px;

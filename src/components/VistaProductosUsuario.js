@@ -12,8 +12,13 @@ A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACI
 
 /* SE CREA EL COMPONENTE ListarLibro() */
 export default function VistaProductosUsuario() {
-
-
+    const [idd, setIdd] = useState("");
+    const [nombre, setNombre] = useState("");
+    const [descripcion, setDescripcion] = useState("");
+    const [precio, setPrecio] = useState("");
+    const [estrella, setEstrella] = useState("");
+    const [correo, setCorreo] = useState("");
+    const [imagen, setImagen] = useState("");
 
 
 
@@ -46,8 +51,23 @@ export default function VistaProductosUsuario() {
         if ((id === id2)) { setAdmin(true) }
 
     }, [id, id2])
+/* MOSTRAR DETALLES DEL PRODUCTO */
+    const consultarusuarioUnico = async (id) => {
 
-
+        const respuesta = await Axios.get(
+          "http://localhost:4000/obtener/" + id
+        ); /* se envia la instruccion al backen para que  consulte un usuarios especifico con el id */
+        /*       console.log(respuesta) */
+    
+        /* DESPUES DE RECIBIR LA INFORMACION SE ACTUALIZA LOS ESTADOS */
+        setIdd(respuesta.data._id);
+        setNombre(respuesta.data.nombre);
+        setDescripcion(respuesta.data.descripcion);
+        setPrecio(respuesta.data.precio);
+        setEstrella(respuesta.data.estrella);
+        setCorreo(respuesta.data.correo);
+        setImagen(respuesta.data.imagen);
+      };
 
     /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
     /*FUNCION PARA LISTAR USUARIOS */
@@ -129,19 +149,6 @@ export default function VistaProductosUsuario() {
 
 
 
-    /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-
-    /* FUNCION ELIMINAR */
-
-    /* para generar doble verificacion de eliminar */
-
-
-    /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-    /* AGREGAR A MIS FAVORITOS */
-
-
-
-    /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
 
     
@@ -155,7 +162,7 @@ export default function VistaProductosUsuario() {
 
 
 
-    /* const g ="https://morfeo12345678.s3-sa-east-1.amazonaws.com/fotos+ganoderma/Screenshot_20201103_093714.jpg " */
+
 
 
     /* CRACION DE LA TABLA BASICA PARA IMPORTAR LOS LISTADOS DESDE EL BACKEND */
@@ -197,11 +204,7 @@ export default function VistaProductosUsuario() {
 
 
 
-                        {/*  <div className="form-check form-check-inline">
-                            <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value='autor' onChange={e => setOpcion(e.target.value)} />
-                            <label className="form-check-label" htmlFor="inlineRadio3">Buscar por valor </label>
-                        </div> */}
-
+                      
                         {/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
 
                         {/*ACA SE RENDERIZARA LA PALABRA EN TEXTO QUE SE ESTARA BUSCANDO */}
@@ -226,9 +229,9 @@ export default function VistaProductosUsuario() {
             {buscar.map(productos => (
                     <div className="col-md-4 pt-2" key={productos._id}>
 
-                        <div className="card text-center" id="card2">
+                        <div className="card text-center " id="card2">
 
-                            <div className="card-header">
+                            <div className="card-header ">
                                 <strong>Nombre: {productos.nombre}</strong>
                             </div>
                             <div className=" imagen3 ">
@@ -239,7 +242,7 @@ export default function VistaProductosUsuario() {
 
 
 
-                                <strong>Detalle: {productos.descripcion}</strong>
+                               
                                 <p></p>
                                 <strong>Puntuacion: {productos.estrella}</strong>
                                 <p></p>
@@ -248,23 +251,108 @@ export default function VistaProductosUsuario() {
                                 <strong>Contacto: {' '}{productos.correo}</strong>
 
                             </div>
-                            <td >
 
+                         
+                            <button
+                          onClick={async(e) =>await consultarusuarioUnico(productos._id)
 
-                                <Link className="btn btn-info mr-2" to='/registrar/' ><i className="far fa-address-book  m-1"></i>
-   Ver Detalle
- </Link>
-
-
-
-
-                            </td>
                             
+                        }
+                      
+                          type="button"
+                          className="btn btn-outline-success mb-2"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        >
+                          <i className="far fa-address-book  m-1"></i>
+                          Mas Detalles
+                        </button>
+                            
+                        <div
+                          className="modal fade"
+                          id="exampleModal"
+                          tabindex="-1"
+                          aria-labelledby="exampleModalLabel"
+                          aria-hidden="true"
+                        >
 
+                          {/* MODAL +++++++++++++++++++++++++++++++++++++++++++++++++++ */}
+                          <div className="modal-dialog d-none-modal-md modal-lg">
+                            <div className="modal-content modal0">
+                              <div className="modal-header ">
+
+                                <h5 className="modal-title " id="exampleModalLabel">
+
+
+                                  Contacto: {correo}
+                                </h5>
+                                <button
+                                  type="button"
+                                  className="btn-close"
+                                  data-bs-dismiss="modal"
+                                  aria-label="Close"
+                                ></button>
+                              </div>
+                              <div className="modal-body ">
+
+                                <div className="col-12 modal1">
+                                  <img className=" d-block w-100" src="https://res.cloudinary.com/dhiasghho/image/upload/v1628963364/frutas_logo_catalogo_alargado_cowasl.png" alt="" />
+                                  <div className="row  ">
+
+                                    <div className="col-xs-12 col-lg-6 imagen33">
+                                      <img id="" src={imagen} alt="" />
+
+                                      <div >
+                                        <h2 className="text-center  mt-2">
+                                          Precio: ${precio}
+                                        </h2>
+                                    
+                                      </div>
+                                    </div>
+
+                                    <div className=" col-xs-12 col-lg-6 ">
+                                      <div className="satisfy_id">
+                                        <h3 className=" text-center display-3">
+                                          {/* Producto: */} {nombre}
+                                        </h3>
+                                      </div>
+                                      <h6 className="text-center  mt-2">
+                                          Puntuacion: {estrella}
+                                        </h6>
+                                      <hr />
+                                      <div className="" >
+                                        <h5 className="text-start display-linebreak">
+                                          {/*  Descripcion:  */}{descripcion}
+
+                                        </h5>
+                                      </div>
+                                     
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="modal-footer ">
+                                <div className="container text-center">
+                                  <a
+                                    type="button"
+                                    className="btn btn-danger "
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Cerrar 
+                                  </a>
+                               
+
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 
 
                         </div>
                     </div>
+                    
 
                 ))}
             </div>

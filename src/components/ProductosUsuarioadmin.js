@@ -219,27 +219,9 @@ export default function ProductosUsuarioadmin() {
         </Link>
       </div>
       <div className="container border border-secondary">
-            {/* AGREGAR PARA ADMINISTRADOR OPCION AGREGAR NUEVO PRODUCTO*/}
-            {(admin) ?
-                <div className="row">
-                    <div className="card-body ">
-                        <div className="col-sm-12 text-center">
+          
 
-                            <Link className="btn btn-info mr-2" to={'/ingresar/'}> <i class="fas fa-plus"></i>
-                     Agregar Nuevo Producto
-                                  </Link>
-                        </div>
-                    </div>
-                </div>
-                :
-
-
-                null
-
-            }
-
-
-
+        
            
             {/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */}
 
@@ -274,8 +256,8 @@ export default function ProductosUsuarioadmin() {
                             <tr>
                                 <td >{i + 1}</td>
                                 {/* agregar la imagen desde el link */}
-                                <div className=" imagen4 ">
-                                    <img className="   text-center" src={productos.imagen} width="100" height="100" alt=""></img>
+                                <div className="  ">
+                                    <img className="   text-center" src={productos.imagen} width="150" height="150" alt=""></img>
                                     {console.log(productos.imagen)}
                                 </div>
                                 <td>{productos.nombre}</td>
@@ -291,15 +273,14 @@ export default function ProductosUsuarioadmin() {
 
 
                                         <Link className="btn btn-info mr-2" to={'/editar/' + productos._id}><i class="fas fa-sync-alt"></i>
-                                            Actualizar
+                                          
                                          </Link>
 
 
 
                                         <button className="btn btn-danger mr-2" onClick={() => eliminar(productos._id)}> <i className="far fa-trash-alt"></i>{/* agregar el onClick para ejecutaar la funcion eliminar APROVECHA Y SACA EL ._ID Y LO ENVIA A LA FUNCION ELIMINAR(_ID)*/}
 
-                                             Eliminar
-
+                                       
 
 
 

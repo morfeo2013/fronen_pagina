@@ -154,8 +154,16 @@ export default function EditarCrearProducto(props) {
       showConfirmButton: false,
     });
     setTimeout(() => {
-      window.location.href =
+
+      if(id1===id2){
+        window.location.href =  "/visualAdmin/"
+        ; /* para redirigir ala pagina listar */
+      }else {
+        window.location.href =
         "/ProductosUsuarioAdmin"; /* para redirigir ala pagina listar */
+      }
+
+     
     }, 1300);
   };
 
