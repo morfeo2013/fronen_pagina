@@ -6,8 +6,8 @@ import React, {
 } from "react"; /* PARA UTILIZAR LOS ESTADOS (useState) Y QUE SE EJECUTEN PRIMERO DETERMINADAS ACCIONES (useEffect) */
 
 import Swal from "sweetalert2"; /* EL EFECTO IMPORTADO DE ANIMACION */
-import { BrowserRouter as Redirect } from "react-router-dom"; /* IMPORTAR PARA PODER ACCEDER AL PA PROPIEDAD LINK Y ACCEDER
-A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACION DE PAGINAS */ /* SE CREA EL COMPONENTE Listar() */
+import { BrowserRouter as Redirect } from "react-router-dom"; /* SE CREA EL COMPONENTE Listar() */ /* IMPORTAR PARA PODER ACCEDER AL PA PROPIEDAD LINK Y ACCEDER
+A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACION DE PAGINAS */
 /* import { Link } from 'react-router-dom'  */ export default function AdminUsuario() {
   /* ESTADOS PARA GUARDAR LOS DATOS RECIBIDOS DEL BACKEND DE TODOS LOS  USARIOS */
   const [datos, setDatos] = useState(
@@ -81,15 +81,14 @@ A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACI
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 
-  const modificarUsuario = async (index,nom) => {
+  const modificarUsuario = async (index, nom) => {
     const id = index;
-    const admin= nom
-   
-     /* deve decir 'image' el archivo */
+    const admin = nom;
+
+    /* deve decir 'image' el archivo */
 
     const respuesta = await Axios.put(
-      "http://localhost:4000/modificar/" + id+"/"+
-      admin
+      "http://localhost:4000/modificar/" + id + "/" + admin
     );
     console.log(respuesta);
     const mensaje =
@@ -101,16 +100,13 @@ A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACI
       showConfirmButton: false,
     });
     setTimeout(() => {
-
-     
-      if(id===id2){
-        window.location.href =  "/visualAdmin/"
-        ; /* para redirigir ala pagina listar */
-      }else {
-        window.location.href = "/VistaProductosUsuario"
-        ; /* para redirigir ala pagina listar */
+      if (id === id2) {
+        window.location.href =
+          "/visualAdmin/"; /* para redirigir ala pagina listar */
+      } else {
+        window.location.href =
+          "/VistaProductosUsuario"; /* para redirigir ala pagina listar */
       }
-
     }, 1300);
   };
 
@@ -290,42 +286,58 @@ A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACI
               <td>{clientes.correo}</td>
 
               <td>
+                  {/* si eres el administrador principal */}
                 {correoBase === clientes.correo ? (
                   <div>
-                    <button
-                      className="btn btn-success mr-2"
-                      disabled
-                     
-                    >
+                    <button className="btn btn-warning mr-2" disabled>
                       {" "}
-                      <i className="fas fa-edit"></i>
-                   
+                      <i className="fas fa-star"></i>{" "+id}
                     </button>
-                    <button
-                      className="btn btn-danger mr-2"
-                      disabled
-                     
-                    >
-                      <i className="far fa-trash-alt"> </i>{" "}
-                   
-                    </button>
+                    
                   </div>
-                ) : (
-                  <div>
-                    <button className="btn btn-success mr-2" onClick={() => modificarUsuario(clientes._id,clientes.nombre)}>
-                      {" "}
-                      <i className="fas fa-edit"></i>
-                      {/* agregar el onClick para ejecutaar la funcion eliminar APROVECHA Y SACA EL ._ID Y LO ENVIA A LA FUNCION ELIMINAR(_ID)*/}
-                    </button>
+                ) : 
+                
+                /* solo los usuarios  */
+                (<> { clientes.admin==="" ? (<div>
+                        <button
+                          className="btn btn-success mr-2"
+                          onClick={() =>
+                            modificarUsuario(clientes._id, clientes.nombre)
+                          }
+                        >
+                          {" "}
+                          <i className="fas fa-edit"></i>
+                         
+                        </button>
+    
+                        <button
+                          className="btn btn-danger mr-2"
+                          onClick={() => eliminar(clientes._id)}
+                        >
+                          <i className="far fa-trash-alt"> </i>{" "}
+                         
+                        </button>
+                      </div>)
+                      :
+                      /* los demas administradores aparte de ti*/
+                      (
+                         
+                        <div>
+                        <button className="btn btn-warning mr-2" disabled>
+                          {" "}
+                          <i className="fas fa-star"></i>
+                        </button>
+                        <button
+                          className="btn btn-danger mr-2"
+                          onClick={() => eliminar(clientes._id)}
+                        >
+                          <i className="far fa-trash-alt"> </i>{" "}
+                          {/* agregar el onClick para ejecutaar la funcion eliminar APROVECHA Y SACA EL ._ID Y LO ENVIA A LA FUNCION ELIMINAR(_ID)*/}
+                        </button>
+                      </div>)}</>
 
-                    <button
-                      className="btn btn-danger mr-2"
-                      onClick={() => eliminar(clientes._id)}
-                    >
-                      <i className="far fa-trash-alt"> </i>{" "}
-                      {/* agregar el onClick para ejecutaar la funcion eliminar APROVECHA Y SACA EL ._ID Y LO ENVIA A LA FUNCION ELIMINAR(_ID)*/}
-                    </button>
-                  </div>
+                   
+                  
                 )}
               </td>
             </tr>
