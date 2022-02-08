@@ -7,8 +7,9 @@ import React, { useEffect, useState } from 'react' /* PARA UTILIZAR LOS ESTADOS 
 import { Link } from 'react-router-dom'  /* IMPORTAR PARA PODER ACCEDER AL PA PROPIEDAD LINK Y ACCEDER
 A LA PAGINA DONDE ESTA CREADO LA OPCION DE  CREAR USUARIOS EN EL RETUR DE CREACION DE PAGINAS */
 
-
-
+/* VISUALIZAR EL RAITING VESTRELLAS */
+import { Rate } from 'antd';
+import 'antd/dist/antd.css'
 
 /* SE CREA EL COMPONENTE ListarLibro() */
 export default function VistaProductosUsuario() {
@@ -238,14 +239,14 @@ export default function VistaProductosUsuario() {
                                 <img className="  img-thumbnail img-fluid  text-center" src={productos.imagen} width="20" height="20" alt=""></img>
                                 {console.log(productos.imagen)}
                             </div>
+                            <Rate disabled defaultValue={productos.estrella} />
                             <div className="card-body ">
 
 
 
                                
                                 <p></p>
-                                <strong>Puntuacion: {productos.estrella}</strong>
-                                <p></p>
+                                
                                 <strong>Valor: {'$'}{productos.precio}</strong>
                                 <p></p>
                                 <strong>Contacto: {' '}{productos.correo}</strong>
@@ -278,12 +279,13 @@ export default function VistaProductosUsuario() {
 
                           {/* MODAL +++++++++++++++++++++++++++++++++++++++++++++++++++ */}
                           <div className="modal-dialog d-none-modal-md modal-lg">
+                         
                             <div className="modal-content modal0">
                               <div className="modal-header ">
 
                                 <h5 className="modal-title " id="exampleModalLabel">
 
-
+                       
                                   Contacto: {correo}
                                 </h5>
                                 <button
@@ -316,9 +318,7 @@ export default function VistaProductosUsuario() {
                                           {/* Producto: */} {nombre}
                                         </h3>
                                       </div>
-                                      <h6 className="text-center  mt-2">
-                                          Puntuacion: {estrella}
-                                        </h6>
+                                      
                                       <hr />
                                       <div className="" >
                                         <h5 className="text-start display-linebreak">

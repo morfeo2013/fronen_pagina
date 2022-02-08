@@ -1,10 +1,21 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { Rate } from 'antd';
+import ReactDOM from 'react-dom';
+import 'antd/dist/antd.css';
 
+const desc = ['1', '2', '3', '4', '5'];
 export default function EditarCrearProducto(props) {
   /* aca el props es para identificar la ruta   que se ingreso  e identificar si es para editar o crear */
- 
+  const [number, setNumber] = useState(0);
+  const [evaluar, setEvaluar] = useState(3);
+  const handleChange =(value) => {
+    setEvaluar({ value });
+  };
+
+
+
   const id1 = sessionStorage.getItem("nombre");
   const id2 = sessionStorage.getItem("admin");
  
@@ -293,7 +304,10 @@ text"
                         required
                       />
                     </div>
-
+                    
+         
+       
+     
                     <div className="form-group  mt-3">
                       <input
                         type="
@@ -351,9 +365,14 @@ text"
                       placeholder="Puntuacion"
                       required
                     />
+
+
                   </div>
 
                   <div className="form-group  mt-3">
+                  <Rate tooltips={desc}  value={desc}   onChange={handleChange({valor: number})} />
+                 
+                  <h2>{number}</h2>
                     <input
                       type="
  text"
@@ -372,7 +391,10 @@ text"
                   {/* CREAR EL OPERADOR TERCEARIO PARA EL CAMBIO DE BOTON UTILIZANDO EL CREADO EN EL ESTADO EDITAR AL INICIO*/}
                 </div>
               )}
-
+{/* <span>
+        <Rate tooltips={desc} onChange={this.handleChange} value={setEvaluar} />
+        {evaluar ? <span className="ant-rate-text">{desc[evaluar - 1]}</span> : ''}
+      </span> */}
               {/* opcion subir foto */}
 
               <div className="d-grid gap-2 m-3">
